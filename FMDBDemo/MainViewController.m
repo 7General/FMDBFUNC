@@ -73,7 +73,8 @@
 -(void)fenyeSelect {
     //[[DBHelper defaultManager] selectDataFromClassName:@"IColud" sortkeys:@"id" fromIndex:1 rowCount:3];
     
-    [[DBHelper defaultManager] selectCountFromTable];
+//    [[DBHelper defaultManager] selectCountFromTable];
+    [[DBHelper defaultManager] getTableItemCount:@"IColud"];
 }
 
 -(void) selectData{

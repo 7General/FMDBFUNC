@@ -164,18 +164,45 @@
             NSLog(@"id = %d, name = %@, age = %@  address = %@", Id, name, age, address);
             
         }
+        [self.DB close];
     }
 }
 
+
+
+// 获得表的数据条数
+- (BOOL) getTableItemCount:(NSString *)tableName
+{
+    NSString *sqlstr = [NSString stringWithFormat:@"SELECT count(*) as 'count' FROM %@", tableName];
+    if ([self.DB open]) {
+        FMResultSet *rs = [self.DB executeQuery:sqlstr];
+        while ([rs next])
+        {
+            NSInteger count = [rs intForColumn:@"count"];
+            NSLog(@"TableItemCount %d", count);
+            
+            return count;
+        }
+        [self.DB close];
+    }
+    
+    
+    return 0;
+}
+
+
+
+
+
 -(void)selectCountFromTable {
     if ([self.DB open]) {
-        NSString * updateSql = [NSString stringWithFormat:@"select count(*) as 'Count' from IColud"];
-        FMResultSet * res = [self.DB executeQuery:updateSql];
-    
-        if ([res next]) {
-            int totalCount = [res intForColumnIndex:0];
-             NSLog(@"---%d",totalCount);
-        }
+        //NSString * updateSql = [NSString stringWithFormat:@"select count(*) as 'Count' from IColud"];
+        //FMResultSet * res = [self.DB executeQuery:updateSql];
+        
+//        if ([res next]) {
+//            int totalCount = [res intForColumnIndex:0];
+//             NSLog(@"---%d",totalCount);
+//        }
 //        while ([res next]) {
 //            int count = [res intForColumn:@"Count"];
 //            NSLog(@"---%d",count);

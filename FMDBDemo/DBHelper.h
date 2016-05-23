@@ -63,4 +63,6 @@
 -(void)selectDataFromClassName:(NSString*)name sortkeys:(NSString *)sortkeys fromIndex:(NSInteger)index rowCount:(NSInteger)countData;
 -(void)selectCountFromTable;
 
+- (BOOL) getTableItemCount:(NSString *)tableName;
+
 @end
