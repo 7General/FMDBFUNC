@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+#import "DBHelper.h"
+
 
 @interface AppDelegate ()
 
@@ -16,8 +19,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    [self createTable];
+    
     return YES;
+}
+
+
+
+-(void)createTable {
+    NSString * sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS IColud (ID INTEGER PRIMARY KEY AUTOINCREMENT, names TEXT, ages INTEGER, address TEXT)"];
+    [[DBHelper defaultManager] CreateDataBaseName:sqlCreateTable];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
