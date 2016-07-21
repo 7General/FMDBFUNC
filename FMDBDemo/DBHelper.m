@@ -68,19 +68,19 @@
  *
  *  @param name <#name description#>
  */
--(void)insertDataWithClassName:(NSString*)insertSql  {
+-(BOOL)insertDataWithClassName:(NSString*)insertSql  {
+    BOOL res = NO;
     if ([self.DB open]) {
         NSString * insertSql1 = insertSql;
-        BOOL res = [self.DB executeUpdate:insertSql1];
-        if (!res) {
-            NSLog(@"insert table-----ERROR");
-        } else {
+        res = [self.DB executeUpdate:insertSql1];
+        if (res) {
             NSLog(@"insert table success");
+        } else {
+            NSLog(@"insert table-----ERROR");
         }
         [self.DB close];
-        
     }
-    
+    return res;
 }
 
 
@@ -90,17 +90,19 @@
  *
  *  @param name 凭借sql语句
  */
--(void)deleteDataWithClassName:(NSString*)deleSql {
+-(BOOL)deleteDataWithClassName:(NSString*)deleSql {
+    BOOL res = NO;
     if ([self.DB open]) {
         NSString * deleteSql = deleSql;
-        BOOL res = [self.DB executeUpdate:deleteSql];
-        if (!res) {
-            NSLog(@"delete table-----ERROR");
-        } else {
+        res = [self.DB executeUpdate:deleteSql];
+        if (res) {
             NSLog(@"delete table-----success");
+        } else {
+            NSLog(@"delete table-----ERROR");
         }
         [self.DB close];
     }
+    return res;
 }
 
 
@@ -109,19 +111,24 @@
  *
  *  @param name 拼接sql查询语句
  */
--(void)selectDataFromClassName:(NSString*)selectSql {
+-(NSMutableArray *)selectDataFromClassName:(NSString*)selectSql {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     if ([self.DB open]) {
         NSString * sql = selectSql;
         FMResultSet * rs = [self.DB executeQuery:sql];
         while ([rs next]) {
-            int Id = [rs intForColumn:@"ID"];
-            NSString * name = [rs stringForColumn:@"names"];
-            NSString * age = [rs stringForColumn:@"ages"];
-            NSString * address = [rs stringForColumn:@"address"];
-            NSLog(@"id = %d, name = %@, age = %@  address = %@", Id, name, age, address);
+            //int Id = [rs intForColumn:@"ID"];
+            //NSString * name = [rs stringForColumn:@"names"];
+            //NSString * age = [rs stringForColumn:@"ages"];
+            //NSString * address = [rs stringForColumn:@"address"];
+            //NSLog(@"id = %d, name = %@, age = %@  address = %@", Id, name, age, address);
+            [arr addObject:[rs resultDictionary]];
+            
+            NSLog(@"arr:%@", arr);
         }
         [self.DB close];
     }
+    return arr;
 }
 
 
@@ -130,18 +137,19 @@
  *
  *  @param ModifySql update的sql语句
  */
--(void)modifyDataWithClassName:(NSString*)ModifySql {
+-(BOOL)modifyDataWithClassName:(NSString*)ModifySql {
+    BOOL res = NO;
     if ([self.DB open]) {
         NSString * updateSql = ModifySql;
-        BOOL res = [self.DB executeUpdate:updateSql];
-        if (!res) {
-            NSLog(@"update table-----ERROR");
-        } else {
+        res = [self.DB executeUpdate:updateSql];
+        if (res) {
             NSLog(@"update table sucess");
+        } else {
+            NSLog(@"update table-----ERROR");
         }
         [self.DB close];
-        
     }
+    return res;
 }
 
 
@@ -150,69 +158,57 @@
 
 
 
--(void)selectDataFromClassName:(NSString*)name sortkeys:(NSString *)sortkey fromIndex:(NSInteger)index rowCount:(NSInteger)countData {
-    
+-(NSMutableArray *)selectDataFromClassName:(NSString*)name sortkeys:(NSString *)sortkey fromIndex:(NSInteger)index rowCount:(NSInteger)countData {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     NSString *sql=[NSString stringWithFormat:@"SELECT  * FROM %@ WHERE %@>=%zi AND %@<=%zi ORDER BY %@ DESC",name,sortkey,(index - 1) * countData+1,sortkey,index * countData,sortkey];
     if ([self.DB open]) {
-        FMResultSet *rs=[self.DB executeQuery:sql];
-        
-        while ([rs next]){
-            int Id = [rs intForColumn:@"ID"];
-            NSString * name = [rs stringForColumn:@"names"];
-            NSString * age = [rs stringForColumn:@"ages"];
-            NSString * address = [rs stringForColumn:@"address"];
-            NSLog(@"id = %d, name = %@, age = %@  address = %@", Id, name, age, address);
+        FMResultSet * result =[self.DB executeQuery:sql];
+        while ([result next]){
+//            int Id = [rs intForColumn:@"ID"];
+//            NSString * name = [rs stringForColumn:@"names"];
+//            NSString * age = [rs stringForColumn:@"ages"];
+//            NSString * address = [rs stringForColumn:@"address"];
+//            NSLog(@"id = %d, name = %@, age = %@  address = %@", Id, name, age, address);
+            //NSString *querySql = @"select * from stuInfo";
+            
+            //NSMutableArray *arr = [[NSMutableArray alloc] init];
+            
+            //FMResultSet *result = [_database executeQuery:querySql];
+            
+            //while ([result next]) {
+                //用数组arr保存一条记录转成的字典
+            [arr addObject:[result resultDictionary]];
+            //}
+            
+            NSLog(@"arr:%@", arr);
+            
             
         }
         [self.DB close];
     }
+    return arr;
 }
 
 
 
 // 获得表的数据条数
-- (BOOL) getTableItemCount:(NSString *)tableName
-{
+- (NSInteger) getTableItemCount:(NSString *)tableName {
+    NSInteger resInt = 0;
     NSString *sqlstr = [NSString stringWithFormat:@"SELECT count(*) as 'count' FROM %@", tableName];
     if ([self.DB open]) {
-        FMResultSet *rs = [self.DB executeQuery:sqlstr];
-        while ([rs next])
-        {
-            NSInteger count = [rs intForColumn:@"count"];
-            NSLog(@"TableItemCount %d", count);
-            
-            return count;
+        FMResultSet *res = [self.DB executeQuery:sqlstr];
+        if ([res next]) {
+            resInt = [res intForColumn:@"count"];
+            NSLog(@"TableItemCount %ld", resInt);
         }
         [self.DB close];
     }
-    
-    
-    return 0;
+    return resInt;
 }
 
-
-
-
-
--(void)selectCountFromTable {
-    if ([self.DB open]) {
-        //NSString * updateSql = [NSString stringWithFormat:@"select count(*) as 'Count' from IColud"];
-        //FMResultSet * res = [self.DB executeQuery:updateSql];
-        
-//        if ([res next]) {
-//            int totalCount = [res intForColumnIndex:0];
-//             NSLog(@"---%d",totalCount);
-//        }
-//        while ([res next]) {
-//            int count = [res intForColumn:@"Count"];
-//            NSLog(@"---%d",count);
-//        }
-        [self.DB close];
-    }
+-(BOOL)isHaveDataFromTableItem:(NSString *)tableName {
+    NSInteger resCount = [self getTableItemCount:tableName];
+    return  resCount > 0 ? YES:NO;
 }
-
-
-
-
 
 @end

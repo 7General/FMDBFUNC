@@ -24,14 +24,14 @@
  *
  *  @param name 添加SQL
  */
--(void)insertDataWithClassName:(NSString*)insertSql;
+-(BOOL)insertDataWithClassName:(NSString*)insertSql;
 
 /**
  *  删除
  *
  *  @param name 删除SQL
  */
--(void)deleteDataWithClassName:(NSString*)deleSql;
+-(BOOL)deleteDataWithClassName:(NSString*)deleSql;
 
 
 /*！
@@ -39,14 +39,14 @@
  *
  *  @param name 查询SQL
  */
--(void)selectDataFromClassName:(NSString*)insertSql;
+-(NSMutableArray *)selectDataFromClassName:(NSString*)insertSql;
 
 /*！
  *  更新服务
  *
  *  @param ModifySql 更新SQL
  */
--(void)modifyDataWithClassName:(NSString*)ModifySql;
+-(BOOL)modifyDataWithClassName:(NSString*)ModifySql;
 
 
 /**
@@ -60,9 +60,24 @@
  *
  *  @return <#return value description#>
  */
--(void)selectDataFromClassName:(NSString*)name sortkeys:(NSString *)sortkeys fromIndex:(NSInteger)index rowCount:(NSInteger)countData;
--(void)selectCountFromTable;
+-(NSMutableArray *)selectDataFromClassName:(NSString*)name sortkeys:(NSString *)sortkeys fromIndex:(NSInteger)index rowCount:(NSInteger)countData;
 
-- (BOOL) getTableItemCount:(NSString *)tableName;
+/**
+ *  查询表里的数据项总计数
+ *
+ *  @param tableName 表名
+ *
+ *  @return 数据项总计数
+ */
+- (NSInteger) getTableItemCount:(NSString *)tableName;
+
+/**
+ *  表里是否有数据
+ *
+ *  @param tableName 表名
+ *
+ *  @return 是否有数据
+ */
+-(BOOL)isHaveDataFromTableItem:(NSString *)tableName;
 
 @end

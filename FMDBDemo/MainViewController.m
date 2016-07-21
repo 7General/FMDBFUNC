@@ -83,7 +83,7 @@
 }
 
 -(void) deleteData{
-    NSString * sqlDel = [NSString stringWithFormat:@"delete  from IColud where id = '%d'",23];
+    NSString * sqlDel = [NSString stringWithFormat:@"delete  from IColud where id > '%d'",10];
     [[DBHelper defaultManager] deleteDataWithClassName:sqlDel];
 }
 
