@@ -71,10 +71,10 @@
 }
 
 -(void)fenyeSelect {
-    //[[DBHelper defaultManager] selectDataFromClassName:@"IColud" sortkeys:@"id" fromIndex:1 rowCount:3];
+    [[DBHelper defaultManager] selectDataFromClassName:@"IColud" sortkeys:@"id" fromIndex:1 rowCount:3];
     
 //    [[DBHelper defaultManager] selectCountFromTable];
-    [[DBHelper defaultManager] getTableItemCount:@"IColud"];
+    [[DBHelper defaultManager] isHaveDataFromTableItem:@"IColud"];
 }
 
 -(void) selectData{
@@ -93,7 +93,8 @@
 }
 
 -(void) insertData{
-    NSString * insertSql = [NSString stringWithFormat:@"insert into IColud (names,ages,address)values ('%@','%@','%@')",@"张",@"12",@"中国"];
+    //NSString * insertSql = [NSString stringWithFormat:@"insert into IColud (names,ages,address)values ('%@','%@','%@')",@"张",@"12",@"中国"];
+    NSString * insertSql = [NSString stringWithFormat:@"insert into News (title,shijian)values ('%@','%f')",@"好",12.55];
     [[DBHelper defaultManager] insertDataWithClassName:insertSql];
 }
 

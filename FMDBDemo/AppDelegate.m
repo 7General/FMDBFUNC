@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "DBHelper.h"
+#import "FMDBExtension.h"
+#import "Cars.h"
+#import "News.h"
 
 
 @interface AppDelegate ()
@@ -33,8 +36,10 @@
 
 
 -(void)createTable {
-    NSString * sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS IColud (ID INTEGER PRIMARY KEY AUTOINCREMENT, names TEXT, ages INTEGER, address TEXT)"];
-    [[DBHelper defaultManager] CreateDataBaseName:sqlCreateTable];
+    //NSString * sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS IColud (ID INTEGER PRIMARY KEY AUTOINCREMENT, names TEXT, ages INTEGER, address TEXT)"];
+    
+   NSString * sql =  [FMDBExtension CreateSqlcommandOfClass:[News class]];
+    [[DBHelper defaultManager] CreateDataBaseName:sql];
     
 }
 

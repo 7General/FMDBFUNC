@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2563F0751D6AE57800B183BA /* ExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F06E1D6AE57800B183BA /* ExtensionConst.m */; };
+		2563F0761D6AE57800B183BA /* FMDBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F0701D6AE57800B183BA /* FMDBExtension.m */; };
+		2563F0771D6AE57800B183BA /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F0721D6AE57800B183BA /* Property.m */; };
+		2563F0781D6AE57800B183BA /* PropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F0741D6AE57800B183BA /* PropertyType.m */; };
+		2563F07B1D6AE59D00B183BA /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F07A1D6AE59D00B183BA /* Cars.m */; };
+		2563F07E1D6AE98700B183BA /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563F07D1D6AE98700B183BA /* News.m */; };
 		259B32E01CF2DF6000F71EC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 259B32DF1CF2DF6000F71EC9 /* main.m */; };
 		259B32E31CF2DF6000F71EC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 259B32E21CF2DF6000F71EC9 /* AppDelegate.m */; };
 		259B32E61CF2DF6000F71EC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259B32E51CF2DF6000F71EC9 /* ViewController.m */; };
@@ -39,6 +45,18 @@
 
 /* Begin PBXFileReference section */
 		22C287947E2EB27C8A4FD351 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2563F06D1D6AE57800B183BA /* ExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionConst.h; sourceTree = "<group>"; };
+		2563F06E1D6AE57800B183BA /* ExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionConst.m; sourceTree = "<group>"; };
+		2563F06F1D6AE57800B183BA /* FMDBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBExtension.h; sourceTree = "<group>"; };
+		2563F0701D6AE57800B183BA /* FMDBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBExtension.m; sourceTree = "<group>"; };
+		2563F0711D6AE57800B183BA /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
+		2563F0721D6AE57800B183BA /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Property.m; sourceTree = "<group>"; };
+		2563F0731D6AE57800B183BA /* PropertyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyType.h; sourceTree = "<group>"; };
+		2563F0741D6AE57800B183BA /* PropertyType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyType.m; sourceTree = "<group>"; };
+		2563F0791D6AE59D00B183BA /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cars.h; sourceTree = "<group>"; };
+		2563F07A1D6AE59D00B183BA /* Cars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cars.m; sourceTree = "<group>"; };
+		2563F07C1D6AE98700B183BA /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		2563F07D1D6AE98700B183BA /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		259B32DB1CF2DF6000F71EC9 /* FMDBDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B32DF1CF2DF6000F71EC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		259B32E11CF2DF6000F71EC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2563F06C1D6AE57800B183BA /* HZDBExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2563F06F1D6AE57800B183BA /* FMDBExtension.h */,
+				2563F0701D6AE57800B183BA /* FMDBExtension.m */,
+				2563F0711D6AE57800B183BA /* Property.h */,
+				2563F0721D6AE57800B183BA /* Property.m */,
+				2563F0731D6AE57800B183BA /* PropertyType.h */,
+				2563F0741D6AE57800B183BA /* PropertyType.m */,
+				2563F06D1D6AE57800B183BA /* ExtensionConst.h */,
+				2563F06E1D6AE57800B183BA /* ExtensionConst.m */,
+			);
+			path = HZDBExtension;
+			sourceTree = "<group>";
+		};
 		259B32D21CF2DF6000F71EC9 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +201,10 @@
 			children = (
 				259B33131CF2E1ED00F71EC9 /* MainViewController.h */,
 				259B33141CF2E1ED00F71EC9 /* MainViewController.m */,
+				2563F0791D6AE59D00B183BA /* Cars.h */,
+				2563F07A1D6AE59D00B183BA /* Cars.m */,
+				2563F07C1D6AE98700B183BA /* News.h */,
+				2563F07D1D6AE98700B183BA /* News.m */,
 			);
 			name = MainViewController;
 			sourceTree = "<group>";
@@ -175,6 +212,7 @@
 		259B33161CF2EA3A00F71EC9 /* PublicTool */ = {
 			isa = PBXGroup;
 			children = (
+				2563F06C1D6AE57800B183BA /* HZDBExtension */,
 				259B33171CF2EA4F00F71EC9 /* DBHelper.h */,
 				259B33181CF2EA4F00F71EC9 /* DBHelper.m */,
 			);
@@ -379,10 +417,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2563F07B1D6AE59D00B183BA /* Cars.m in Sources */,
 				259B32E61CF2DF6000F71EC9 /* ViewController.m in Sources */,
+				2563F0751D6AE57800B183BA /* ExtensionConst.m in Sources */,
+				2563F0771D6AE57800B183BA /* Property.m in Sources */,
 				259B33191CF2EA4F00F71EC9 /* DBHelper.m in Sources */,
+				2563F0781D6AE57800B183BA /* PropertyType.m in Sources */,
 				259B32E31CF2DF6000F71EC9 /* AppDelegate.m in Sources */,
+				2563F0761D6AE57800B183BA /* FMDBExtension.m in Sources */,
 				259B32E01CF2DF6000F71EC9 /* main.m in Sources */,
+				2563F07E1D6AE98700B183BA /* News.m in Sources */,
 				259B33151CF2E1ED00F71EC9 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
