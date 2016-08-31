@@ -3,9 +3,9 @@ FMDB封装------快速使用
 
 ### 创建数据表
 ```objc
-//创建表sql语句
-NSString * sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS IColud (ID INTEGER PRIMARY KEY AUTOINCREMENT, names TEXT, ages INTEGER, address TEXT)"];
-[[DBHelper defaultManager] CreateDataBaseName:sqlCreateTable];
+//创建表sql语句（这里只需要传入 [selfclass class]）即可创建表
+  NSString * sql =  [FMDBExtension CreateSqlcommandOfClass:[News class]];
+  [[DBHelper defaultManager] CreateDataBaseName:sql];
 ```
 
 ### 查询
